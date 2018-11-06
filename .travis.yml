@@ -1,6 +1,10 @@
 language: node_js
 node_js: 
-  "node"
+  "9"
+  "8"
+  "6"
+  "5"
+  "4"
 notifications: 
   email: 
     paschal.obba@stu.cu.edu.ng
