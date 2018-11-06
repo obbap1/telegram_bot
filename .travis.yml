@@ -1,5 +1,6 @@
 language: node_js
 node_js: 
+  "10"
   "9"
   "8"
   "6"
@@ -8,4 +9,4 @@ node_js:
 notifications: 
   email: 
     paschal.obba@stu.cu.edu.ng
-install: npm install
+install: npm install --build-from-source
