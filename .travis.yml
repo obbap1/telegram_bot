@@ -4,3 +4,4 @@ node_js:
 notifications: 
   email: 
     paschal.obba@stu.cu.edu.ng
+install: npm install
