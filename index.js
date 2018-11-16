@@ -21,7 +21,7 @@ bot.onText(/\/start/,(msg,match)=>{
                     bot.sendMessage(message.chat.id,`Got it! What time? [example: /time (HH:MM:SS)]`)
                         .then(() => {
                             bot.onText(/\/time ([01]\d|2[0-3]):([0-5]\d:[0-5]\d)/,(message,match)=>{
-                                time = match[0].split(' ')[1];
+                                const time = match[0].split(' ')[1];
                             
                                 let randomString = generator.randomStringGenerator(11);
                             
