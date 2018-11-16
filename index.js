@@ -18,11 +18,11 @@ bot.onText(/\/start/,(msg,match)=>{
             bot.onText(/\/save (.+)/, (message, match)=>{
                 reminder = match[1];
                 if(reminder){
-                    bot.sendMessage(message.chat.id,`Got it! What time? [example: /time (0-24)(AM/PM) ]`)
+                    bot.sendMessage(message.chat.id,`Got it! What time? [example: /time (HH:MM:SS)]`)
                         .then(() => {
-                            bot.onText(/([0-9]|[0-1][0-9]|2[0-4])(AM|PM|am|pm)/,(message,match)=>{
-                                time = match[0];
-
+                            bot.onText(/\/time ([01]\d|2[0-3]):([0-5]\d:[0-5]\d)/,(message,match)=>{
+                                time = match[0].split(' ')[1];
+                            
                                 let randomString = generator.randomStringGenerator(11);
                             
                                 const docItem = String(message.chat.first_name + randomString);
@@ -32,9 +32,11 @@ bot.onText(/\/start/,(msg,match)=>{
                                 let newData = newRef.set({
                                     remind: reminder,
                                     time: time,
-                                    user: message.chat.id
+                                    user: message.chat.id,
+                                    first_name: msg.chat.first_name,
+                                    last_name: msg.chat.last_name
                                 })
-                                bot.sendMessage(message.chat.id,`Thank you ${message.chat.first_name}, your reminder has been saved.`);
+                                bot.sendMessage(message.chat.id,`Thank you ${message.chat.first_name}, your reminder for time ${time} has been saved.`);
                             })
                             
                         })
@@ -50,10 +52,10 @@ bot.onText(/\/start/,(msg,match)=>{
 });
 
 bot.on('polling_error', (error) => {
-    console.log('EFATAL',error);  // => 'EFATAL'
+    return error;  // => 'EFATAL'
   });
 
 //Handle errors
 bot.on('error',(error)=>{
-   console.log(error);
+   return error;
 })
