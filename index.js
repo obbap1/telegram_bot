@@ -5,6 +5,8 @@ const db = require('./database').database;
 const generator = require('./helper');
 const token = process.env.BOT_TOKEN;
 
+console.log('started..............')
+
 //Initialize bot
 const bot = new telegramBot (token, {polling:true});
 
