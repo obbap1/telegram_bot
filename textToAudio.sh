@@ -4,7 +4,7 @@ echo "argument: $1"
 
 if [ "$1" != "" ]; then
     echo "Not empty"
-    curl -X POST -u "apikey:OsQs2HilKGwqSX_QWJ_yEqffe3ncSCWKzWvK9IwDAyFB" \
+    curl -X POST -u "apikey:$2" \
     --header "Content-Type: application/json" \
     --header "Accept: audio/ogg" \
     --data "{\"text\":\"$1\"}" \
