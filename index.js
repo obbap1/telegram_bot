@@ -5,7 +5,7 @@ const cron = require("node-cron");
 const db = require('./database').database;
 const generator = require('./helper');
 const token = process.env.BOT_TOKEN;
-const shell = require('shelljs');
+const shell = require('sheljs');
 
 //Initialize bot
 const bot = new telegramBot (token, {polling:true});
